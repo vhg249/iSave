@@ -1,6 +1,7 @@
 $purple: #7406AB;
 $white: #ffffff;
 $grey: #787878;
+$dark-gray: 4F4F4F;
 @mixin laptop {
     @media (max-width: 1024px) { @content; }
 }
@@ -30,6 +31,17 @@ p{
     @include ipad{
         padding: 2rem 1rem;
     }
+    @include iphone{
+        padding: 1rem;
+    }
+}
+.normal-size-text{
+    font-size: 18px;
+    @include iphone{font-size: 12px;}
+}
+.big-size-text{
+    font-size: 36px;
+    @include iphone{font-size: 18px;}
 }
 .download-button{
     background-color: $white;
@@ -46,7 +58,7 @@ p{
     .banner{
         height: 700px;
         @include laptop{
-            height: 550px;
+            // height: 550px;
         }
     }
     .header-container{
@@ -71,10 +83,18 @@ p{
                 font-size: 24px;
                 font-family: Roboto;
             }
+            .menu-coin{
+                @include iphone{
+                    display: none;
+                }
+            }
             .menu-item{
                 display: flex;
                 align-items: center;
                 margin-right: 1rem;
+                @include iphone{
+                    display: none;
+                }
 
                 .menu-title{
                     font-size: 11px;
@@ -82,6 +102,14 @@ p{
                 .menu-info{
                     font-size: 9px;
                 }
+            }
+        }
+        .app-download{
+            @include iphone{
+                flex-direction: column;
+            }
+            img{
+                margin-bottom: 2rem;
             }
         }
         .phone-img{
@@ -95,18 +123,27 @@ p{
 .body-container{
     padding-top: 2rem;
     .title{
-        font-size: 24px;
+        // font-size: 24px;
         font-weight: 500;
         vertical-align: middle;
         margin-left: 1rem;
+        @include iphone{
+            margin: 0px;
+        }
     }
 
     .categories{
+        @include iphone{
+            margin: 0 !important;
+        }
         .title{
-            width: 600px; 
+            // width: 600px; 
             display: inline-block;
-            font-size: 36px;
+            // font-size: 36px;
             font-weight: 700;
+            @include iphone{
+                margin: 0px !important;
+            }
         }
         .box-cover{
             width: 100%;
@@ -132,11 +169,22 @@ p{
         margin: 3rem;
     }
     .introduction{
-        width: 100%;
+        // width: 100%;
         background-color: #F4F4F4;
+        @include iphone{
+            padding: 1rem !important;
+        }
+        .intro-detail{
+            @include iphone{
+                width: 100% !important;
+            }
+        }
     }
 
     .info{
+        @include iphone{
+            margin: 0px !important;
+        }
         .text1{
             color: $grey;
             font-size: 18px;
@@ -167,8 +215,79 @@ p{
 
     .tutorior{
         text-align: center;
-        img{
-            width: 100%;
+        .cover-img{
+
+            height: 60%;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        
+    }
+
+    .partner{
+        .title{
+            @extend .introduction;
+            text-align: center;
+            position: relative;
+            padding-bottom: 7rem;
+            img{
+                margin-right: 2rem;
+                @include ipad{
+                    width: 15%;
+                }
+            }
+        }
+        .box-cover{
+            position: absolute;
+            top: -45%;
+            width: 70%;
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: 20px;
+            margin: 0px;
+            @include ipad{
+                width: 90%;
+            }
+        }
+        .quote-container{
+            .quote{
+                font-size: 2rem;
+                font-weight: 500;
+                @include iphone{
+                    font-size: 1.5rem !important; 
+                }
+            }
+        }
+    }
+    
+    #carousel_intro{
+        .carousel-caption{
+            // bottom: 40%;
+        }
+    }
+
+    .success{
+        @extend .partner;
+
+        .number{
+            color: $purple;
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .text{
+            color: $dark-gray;
+            font-size: 18px;
+            text-align: center;
+        }
+        .box-cover{
+            padding: 3rem 5rem;
+            top: -30%;
+            @include ipad{
+                padding: 2rem 1rem;
+            }
         }
     }
     
@@ -178,7 +297,9 @@ p{
     background-color: #F2F2F2;
     width: 100%;
     padding: 5rem;
-
+    @include iphone{
+        padding: 1rem;
+    }
     .text{
         color: #686868;
         font-size: 18px;
